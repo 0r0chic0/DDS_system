@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Mon Jun 24 15:50:49 2024
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : dds_and_nios_lab
+Top-level Entity Name : dds_and_nios_lab
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 11173
+Total pins : 241
+Total virtual pins : 0
+Total block memory bits : 264,088
+Total DSP Blocks : 3
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 2
+Total DLLs : 0

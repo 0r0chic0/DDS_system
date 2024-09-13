@@ -1,0 +1,19 @@
+module Signal_selector (
+    input logic [1:0] signal_selector,
+    input logic [11:0] sin,
+    input logic [11:0] cos,
+    input logic [11:0] saw,
+    input logic [11:0] squ,
+    output logic [11:0] signal_out
+);
+    // Select signal based on signal_selector
+    always_comb begin
+        case(signal_selector)
+            2'b00: signal_out = sin;
+            2'b01: signal_out = cos;
+            2'b10: signal_out = saw;
+            2'b11: signal_out = squ;
+            default: signal_out = sin;
+        endcase
+    end
+endmodule

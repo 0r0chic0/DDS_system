@@ -1,0 +1,37 @@
+module Synchronizer (
+    input wire fast_clk,		
+    input wire slow_clk,
+    input wire [11:0] data_in,
+    output reg [11:0] data_out
+);
+    reg [11:0] reg1_out, reg3_out;
+    reg en, temp;
+
+    // Flip flops for data transfer
+    Flip_Flop_with_enable #(12) reg1 (.d(data_in), .enable(1'b1), .clk(fast_clk), .q(reg1_out));
+    Flip_Flop_with_enable #(12) reg3 (.d(reg1_out), .enable(en), .clk(fast_clk), .q(reg3_out));
+    Flip_Flop_with_enable #(12) reg2 (.d(reg3_out), .enable(1'b1), .clk(slow_clk), .q(data_out));
+
+    // Synchronization logic for enable signal
+    Flip_Flop_with_enable #(1) s1 (.d(slow_clk), .enable(1'b1), .clk(~fast_clk), .q(temp));
+    Flip_Flop_with_enable #(1) s2 (.d(temp), .enable(1'b1), .clk(~fast_clk), .q(en));
+
+endmodule
+
+
+module Flip_Flop_with_enable (
+    input wire [N-1:0] d,
+    input wire enable,
+    input wire clk,
+    output reg [N-1:0] q
+);
+    parameter N = 1;
+
+    always @(posedge clk) begin
+        if (enable) 
+            q <= d;
+        else 
+            q <= q;
+    end
+
+endmodule

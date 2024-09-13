@@ -1,0 +1,37 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst audio2fifo.WRCLK -pg 1 -lvl 2 -y 750
+preplace inst audio2fifo.OUT_DATA_AUDIO -pg 1 -lvl 2 -y 430
+preplace inst audio2fifo.clk_sys -pg 1 -lvl 1 -y 610
+preplace inst audio2fifo.WRREQ -pg 1 -lvl 2 -y 850
+preplace inst audio2fifo.OUT_PAUSE -pg 1 -lvl 2 -y 530
+preplace inst audio2fifo.DATA_FREGEN -pg 1 -lvl 2 -y 30
+preplace inst audio2fifo.FIFO_FULL -pg 1 -lvl 2 -y 230
+preplace inst audio2fifo -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst audio2fifo.EMPTY -pg 1 -lvl 2 -y 130
+preplace inst audio2fifo.fifo_used -pg 1 -lvl 2 -y 330
+preplace inst audio2fifo.OUT_STOP -pg 1 -lvl 2 -y 650
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.fifo_full_s1,(SLAVE)FIFO_FULL.s1) 1 0 2 NJ 300 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.fifo_full,(SLAVE)FIFO_FULL.external_connection) 1 0 2 NJ 260 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.wrreq,(SLAVE)WRREQ.external_connection) 1 0 2 NJ 880 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.data_divfrec,(SLAVE)DATA_FREGEN.external_connection) 1 0 2 NJ 60 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.wrclk,(SLAVE)WRCLK.external_connection) 1 0 2 NJ 780 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)EMPTY.external_connection,(SLAVE)audio2fifo.empty) 1 0 2 NJ 160 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)clk_sys.clk_in_reset,(SLAVE)audio2fifo.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)OUT_PAUSE.external_connection,(SLAVE)audio2fifo.out_pause) 1 0 2 NJ 560 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)fifo_used.s1,(SLAVE)audio2fifo.fifo_used_s1) 1 0 2 NJ 400 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.wrreq_s1,(SLAVE)WRREQ.s1) 1 0 2 NJ 920 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.empty_s1,(SLAVE)EMPTY.s1) 1 0 2 NJ 200 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)OUT_DATA_AUDIO.external_connection,(SLAVE)audio2fifo.out_data_audio) 1 0 2 NJ 460 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.fifo_used,(SLAVE)fifo_used.external_connection) 1 0 2 NJ 360 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.data_fregen_s1,(SLAVE)DATA_FREGEN.s1) 1 0 2 NJ 100 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.clk,(SLAVE)clk_sys.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.out_stop,(SLAVE)OUT_STOP.external_connection) 1 0 2 NJ 680 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.out_pause_s1,(SLAVE)OUT_PAUSE.s1) 1 0 2 NJ 600 NJ
+preplace netloc FAN_OUT<net_container>audio2fifo</net_container>(SLAVE)OUT_PAUSE.reset,(SLAVE)OUT_DATA_AUDIO.reset,(MASTER)clk_sys.clk_reset,(SLAVE)FIFO_FULL.reset,(SLAVE)WRREQ.reset,(SLAVE)WRCLK.reset,(SLAVE)EMPTY.reset,(SLAVE)fifo_used.reset,(SLAVE)OUT_STOP.reset,(SLAVE)DATA_FREGEN.reset) 1 1 1 350
+preplace netloc FAN_OUT<net_container>audio2fifo</net_container>(SLAVE)WRREQ.clk,(SLAVE)WRCLK.clk,(SLAVE)FIFO_FULL.clk,(SLAVE)OUT_PAUSE.clk,(MASTER)clk_sys.clk,(SLAVE)DATA_FREGEN.clk,(SLAVE)OUT_DATA_AUDIO.clk,(SLAVE)EMPTY.clk,(SLAVE)OUT_STOP.clk,(SLAVE)fifo_used.clk) 1 1 1 330
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.wrclk_s1,(SLAVE)WRCLK.s1) 1 0 2 NJ 820 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)OUT_STOP.s1,(SLAVE)audio2fifo.out_stop_s1) 1 0 2 NJ 720 NJ
+preplace netloc EXPORT<net_container>audio2fifo</net_container>(SLAVE)audio2fifo.out_data_audio_s1,(SLAVE)OUT_DATA_AUDIO.s1) 1 0 2 NJ 500 NJ
+levelinfo -pg 1 0 120 540
+levelinfo -hier audio2fifo 130 160 380 530

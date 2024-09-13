@@ -1,0 +1,24 @@
+module Modulator_selector (
+    input wire qpsk,
+    input wire [1:0] modulation_selector,
+    input wire [1:0] lfsr,
+    input wire [11:0] sin,
+    input wire [11:0] cos,
+    output wire  [11:0] modulation_out
+);
+    // Select modulation based on modulation_selector and qpsk
+    always @(*) begin
+        if (qpsk) begin
+            modulation_out = lfsr[0] ? (lfsr[1] ? sin : ~sin + 1) : (lfsr[1] ? cos : ~cos + 1);
+        end else begin
+            case(modulation_selector)
+                2'b00: modulation_out = lfsr[0] ? sin : 12'b0;
+                2'b01: modulation_out = sin;
+                2'b10: modulation_out = lfsr[0] ? (~sin + 1) : sin;
+                2'b11: modulation_out = lfsr[0] ? 12'b0 : 12'b100000000000;
+                default: modulation_out = lfsr[0] ? sin : 12'b0;
+            endcase
+        end
+    end
+endmodule
+
